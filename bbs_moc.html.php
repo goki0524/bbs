@@ -4,19 +4,15 @@ if (!empty($_POST)) {
  $nickname = htmlspecialchars($_POST['nickname']);
  $content = htmlspecialchars($_POST['content']);
 
+// バリデーション フロントサイドで入力の制限をしているのでなし
 // ニックネーム
-  if ($nickname == '') {
-    $nickname_result = 'ニックネームが入力されていません。';
-  } else {
-    $nickname_result = 'ようこそ' . $nickname .'様';
-  }
- 
-  // お問い合わせ内容
-  if ($content == '') {
-    $content_result = 'お問い合わせ内容が入力されていません。';
-  } else {
-    $content_result = 'お問い合わせ内容：' . $content;
-  }
+//   if ($nickname == '') {
+//     $nickname_result = 'カッコ悪い人のなまえが入力されていません。';
+//   }
+// コンテント
+//   if ($content == '') {
+//     $content_result = 'カッコ悪いコメントが入力されてません。';
+//   } 
 
  // １．データベースに接続する
   $dsn = 'mysql:dbname=phpkiso;host=localhost';
@@ -25,13 +21,11 @@ if (!empty($_POST)) {
   $dbh = new PDO($dsn, $user, $password);
   $dbh->query('SET NAMES utf8');
 
-
   // ２．SQL文を実行する
   $sql = "INSERT INTO `survey` (`nickname`, `content`) VALUES ( ?, ?)";
   $data = array($nickname,$content);
   $stmt = $dbh->prepare($sql);
   $stmt->execute($data);
-
 
   // ３．データベースを切断する
   $dbh = null;
@@ -163,7 +157,7 @@ if (!empty($_POST)) {
                     
                   </div>
 <?php 
-                  //コンテンツをデータベースからよび出す
+  //コンテンツをデータベースからよび出す
   $dsn = 'mysql:dbname=phpkiso;host=localhost';
   $user = 'root';
   $password='';

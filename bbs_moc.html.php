@@ -39,59 +39,6 @@ if (!empty($_POST)) {
 ?>
 
 
-<?php
-
-//コンテンツをデータベースからよび出す
-  // $dsn = 'mysql:dbname=phpkiso;host=localhost';
-  // $user = 'root';
-  // $password='';
-  // $dbh = new PDO($dsn, $user, $password);
-  // $dbh->query('SET NAMES utf8');
-
-  //  // ２．SQL文を実行する
-  // $sql = "SELECT * FROM `survey`";
-
-
-  // $stmt = $dbh->prepare($sql);
-  // $stmt->execute();
-
-  // // データを取得する
-  //   while (1) {
-  //     $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-  //     if ($rec == false) {
-  //       break;
-  //     }
-      
-  //     $_nickname = $rec['nickname'];
-  //     $_content = $rec['content'];
-  //     $box = [];
-  //     $box = "<div class='timeline-label label-sita'>
-  //                     <h2>
-  //                       <a href='#'>$_nickname</a> <span>2016-01-20</span></h2>
-  //                     <p><i class='fab fa-jenkins'></i>
-  //                       $_content
-  //                     </p>
-                    
-  //                 </div>";
-  //   }
-  
-  // // ３．データベースを切断する
-  // $dbh = null;
-
-
-
-
-
-
-?>
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -239,14 +186,16 @@ if (!empty($_POST)) {
     
     $_nickname = $rec['nickname'];
     $_content = $rec['content'];
+    $_modified = $rec['modified'];
     $box = [];
     $box = "<div class='timeline-label label-sita'>
                     <h2>
-                      <a href='#'>$_nickname</a> <span>2016-01-20</span></h2>
+                      <a href='#'>$_nickname</a> <span>
+                      $_modified</span></h2>
                     <p><i class='fab fa-jenkins'></i>
                       $_content
                     </p>
-                    
+
                   </div>";
     echo $box;
   }
@@ -255,13 +204,7 @@ if (!empty($_POST)) {
   $dbh = null;
 
 
-  ?>
-
-
-
-
-
-
+?>
 
               </div>
           </article>

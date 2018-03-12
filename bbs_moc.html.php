@@ -109,12 +109,11 @@ if (!empty($_POST)) {
         <div class="timeline-centered">
           <article class="timeline-entry">
               <div class="timeline-entry-inner">
-                  <div class="timeline-icon bg-success">
+                  <!-- <div class="timeline-icon bg-success">
                       <i class="entypo-feather"></i>
-                      <!-- <i class="fa fa-cogs"></i> -->
                       <i class="fab fa-earlybirds"></i>
-                  </div>
-                  <div class="timeline-label label-sita">
+                  </div> -->
+                  <!-- <div class="timeline-label label-sita">
                       <h2>
                         <a href="#">ルルーシュ・ランペルージ</a> <span>2016-01-20</span></h2>
                       <p><i class="fab fa-jenkins"></i>
@@ -155,8 +154,9 @@ if (!empty($_POST)) {
                       <p><i class="fab fa-jenkins"></i>
                       「おれの水曜日だ！」 by.げん</p>
                     
-                  </div>
-<?php 
+                  </div> -->
+<?php
+
   //コンテンツをデータベースからよび出す
   $dsn = 'mysql:dbname=phpkiso;host=localhost';
   $user = 'root';
@@ -165,8 +165,8 @@ if (!empty($_POST)) {
   $dbh->query('SET NAMES utf8');
 
    // ２．SQL文を実行する
-  $sql = "SELECT * FROM `survey`";
-
+  // $sql = "SELECT * FROM `survey`";
+  $sql = "SELECT * FROM `survey` ORDER BY `modified` DESC";
 
   $stmt = $dbh->prepare($sql);
   $stmt->execute();
@@ -182,15 +182,16 @@ if (!empty($_POST)) {
     $_content = $rec['content'];
     $_modified = $rec['modified'];
     $box = [];
-    $box = "<div class='timeline-label label-sita'>
-                    <h2>
-                      <a href='#'>$_nickname</a> <span>
-                      $_modified</span></h2>
-                    <p><i class='fab fa-jenkins'></i>
-                      $_content
-                    </p>
-
-                  </div>";
+    $box = "<div class='timeline-icon bg-success'>
+                      <i class='entypo-feather'></i>
+                      <i class='fab fa-earlybirds'></i>
+            </div>
+            <div class='timeline-label label-sita'>
+              <h2>
+                <a href='#'>$_nickname</a><span>$_modified</span>
+              </h2>
+              <p><i class='fab fa-jenkins'></i>$_content</p>
+            </div>";
     echo $box;
   }
         

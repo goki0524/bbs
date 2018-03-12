@@ -1,5 +1,5 @@
 <?php
-  // ここにDBに登録する処理を記述する
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (!empty($_POST)) {
  $nickname = htmlspecialchars($_POST['nickname']);
  $content = htmlspecialchars($_POST['content']);
@@ -29,6 +29,8 @@ if (!empty($_POST)) {
 
   // ３．データベースを切断する
   $dbh = null;
+}
+header('Location:http://localhost/bbs/oneline_bbs-master/bbs_moc.html.php', true, 303);
 }
 ?>
 
@@ -109,52 +111,7 @@ if (!empty($_POST)) {
         <div class="timeline-centered">
           <article class="timeline-entry">
               <div class="timeline-entry-inner">
-                  <!-- <div class="timeline-icon bg-success">
-                      <i class="entypo-feather"></i>
-                      <i class="fab fa-earlybirds"></i>
-                  </div> -->
-                  <!-- <div class="timeline-label label-sita">
-                      <h2>
-                        <a href="#">ルルーシュ・ランペルージ</a> <span>2016-01-20</span></h2>
-                      <p><i class="fab fa-jenkins"></i>
-                      「間違っていたのは俺じゃない、世界の方だ」by.ルルーシュ・ランペルージ</p>
-                    
-                  </div>
-                  <div class="timeline-label label-sita">
-                      <h2>
-                        <a href="#">夜神月</a> <span>2016-01-20</span></h2>
-                      <p><i class="fab fa-jenkins"></i>
-                      「僕は新世界の神となる！」 by.夜神月</p>
-                    
-                  </div>
-                  <div class="timeline-label label-sita">
-                      <h2>
-                        <a href="#">うちはサスケ</a> <span>2016-01-20</span></h2>
-                      <p><i class="fab fa-jenkins"></i>
-                      「この眼は闇が良く見える」 by.うちはサスケ</p>
-                    
-                  </div>
-                  <div class="timeline-label label-sita">
-                      <h2>
-                        <a href="#">上条当麻</a> <span>2016-01-20</span></h2>
-                      <p><i class="fab fa-jenkins"></i>
-                      ｢その幻想をぶち殺す!!｣by.上条当麻</p>
-                    
-                  </div>
-                  <div class="timeline-label label-sita">
-                      <h2>
-                        <a href="#">渚カヲル</a> <span>2016-01-20</span></h2>
-                      <p><i class="fab fa-jenkins"></i>
-                      「ガラスのように繊細だね。特に君の心は」by.渚カヲル</p>
-                    
-                  </div>
-                  <div class="timeline-label label-sita">
-                      <h2>
-                        <a href="#">げん</a> <span>2016-01-20</span></h2>
-                      <p><i class="fab fa-jenkins"></i>
-                      「おれの水曜日だ！」 by.げん</p>
-                    
-                  </div> -->
+                  
 <?php
 
   //コンテンツをデータベースからよび出す
@@ -197,8 +154,6 @@ if (!empty($_POST)) {
         
   // ３．データベースを切断する
   $dbh = null;
-
-
 ?>
 
               </div>
